@@ -2,8 +2,6 @@
 // 头文件
 #include <iostream>
 using namespace std;
-#include <math.h>
-
 void weclome() {// 输出一行信息
     cout <<"Hello World"<<endl;
 
