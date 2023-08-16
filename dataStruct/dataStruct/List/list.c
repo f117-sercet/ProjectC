@@ -31,12 +31,26 @@ ListNode List_push(ListNode list, int val){
 int List_length(ListNode *list){
     
     int n;
-   while(list->next){
+   while(list){
        n++;
+      list= list->next;
    }
     return n - 1;
     
 }
 
+void **List_toArray(ListNode *list)
+{
+    int i, n = List_length(list) + 1;
+    void **array = (void **)malloc((n + 1) * sizeof(*array));
+
+    for (i = 0; i < n; i++)
+    {
+        array[i] = (void *) list->val;
+        list = list->next;
+    }
+    array[i] = NULL;
+    return array;
+}
 
 
