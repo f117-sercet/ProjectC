@@ -47,6 +47,8 @@ void create() {
         }
 
         last->next=first ;
+
+        // 循环链表
     }
 
     }
