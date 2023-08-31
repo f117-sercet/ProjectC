@@ -20,3 +20,30 @@ void create(){
     tail = nullptr;
 
 }
+
+// 进队
+void enque(int data){
+    if (head == nullptr){
+        head = new node;
+        head->data= data;
+        head->pre = nullptr;
+        tail = head;
+    } else{
+        tmp = new node;
+        tmp->data = data;
+        tmp->next = tail;
+        tail = tmp;
+    }
+}
+
+// 出队
+int deque(){
+    int returnData = 0;
+    if (head == nullptr){
+        printf("ERROR: Deque from empty queue.\n");
+        exit(1);
+    }
+
+};
+
+
