@@ -43,7 +43,20 @@ int deque(){
         printf("ERROR: Deque from empty queue.\n");
         exit(1);
     }
+    else {
 
-};
+       returnData =  head->data;
 
+        if (head->pre == nullptr)
+            head = nullptr;
+        else
+            head = head->pre;
+        head->next = nullptr;
+    }
+    return returnData;
+}
+
+int size(){
+    return count;
+}
 
