@@ -27,5 +27,25 @@ Node *node = new Node;
 
 int isLeafNode(Node *node)
 {
+    if (node->left == nullptr && node->right == nullptr)
+        return 1;
+    return 0;
+}
+
+// 左旋树
+
+Node *leftRotate(Node *node)
+{
+    Node *parent = node->par;
+    Node *grandParent = parent->par;
+    parent->right = node->left;
+
+    if (node->left!= nullptr){
+        node->left->par = parent;
+    }
 
 }
+
+
+
+
