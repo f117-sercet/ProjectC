@@ -38,12 +38,60 @@ Node *leftRotate(Node *node)
 {
     Node *parent = node->par;
     Node *grandParent = parent->par;
-    parent->right = node->left;
 
-    if (node->left!= nullptr){
+    parent->right = node->left;
+    if (node->left != NULL)
+    {
         node->left->par = parent;
     }
+    node->par = grandParent;
+    parent->par = node;
+    node->left = parent;
+    if (grandParent != NULL)
+    {
+        if (grandParent->right == parent)
+        {
+            grandParent->right = node;
+        }
+        else
+        {
+            grandParent->left = node;
+        }
+    }
+    return node;
+}
 
+// Right Rotate
+Node *rightRotate(Node *node)
+{
+    Node *parent = node->par;
+    Node *grandParent = parent->par;
+
+    parent->right = node->left;
+    if (node->left != NULL)
+    {
+        node->left->par = parent;
+    }
+    node->par = grandParent;
+    parent->par = node;
+    node->left = parent;
+    if (grandParent != NULL)
+    {
+        if (grandParent->right == parent)
+        {
+            grandParent->right = node;
+        }
+        else
+        {
+            grandParent->left = node;
+        }
+    }
+    return node;
+}
+void checkNode(Node *node)
+{
+    if ((node == nullptr || node->par == nullptr))
+        return;
 }
 
 
