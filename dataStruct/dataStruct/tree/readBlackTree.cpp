@@ -75,7 +75,7 @@ Node *rightRotate(Node *node)
     node->par = grandParent;
     parent->par = node;
     node->left = parent;
-    if (grandParent != NULL)
+    if (grandParent != nullptr)
     {
         if (grandParent->right == parent)
         {
@@ -90,8 +90,32 @@ Node *rightRotate(Node *node)
 }
 void checkNode(Node *node)
 {
-    if ((node == nullptr || node->par == nullptr))
+    if ((node == nullptr || node->par == nullptr)) {
+
+
         return;
+    }
+    Node *child = node;
+    // 如果是一个黑色节点或者他的父节点是一个黑色节点
+    if (node->color == 0 || (node->par)->color == 0)
+    {
+        return;
+    }
+
+    // Both parent and child are red
+    // Check For Uncle
+    Node *parent = node->par;
+    Node *grandParent = parent->par;
+
+    // If grandParent is NULL, then parent is the root.
+    // Just make the root black.
+
+    if (grandParent == nullptr){
+        parent->color =0;
+        return;
+    }
+
+
 }
 
 
