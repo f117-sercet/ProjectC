@@ -235,6 +235,21 @@ void checkNode(Node *node) {
     }
 }
 
+void insertNode(int val,Node **root){
+
+    Node *buffRoot = *root;
+    while (buffRoot){
+
+        if (buffRoot->val>val){
+
+
+        }
+    }
+
+}
+
+
+
 
 
 
