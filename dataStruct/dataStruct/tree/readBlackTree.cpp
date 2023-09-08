@@ -242,10 +242,61 @@ void insertNode(int val,Node **root){
 
         if (buffRoot->val>val){
 
+            if (buffRoot->val>val){
 
+                if (buffRoot->left != nullptr){
+                    buffRoot = buffRoot->left;
+
+                } else
+                {
+                   Node *toInsert =  newNode(val,buffRoot);
+                  buffRoot->left = toInsert;
+                  buffRoot = toInsert;
+
+                    break;
+                }
+
+            }
+            else
+            {
+                if (buffRoot->right != nullptr){
+
+                    buffRoot = buffRoot->right;
+                }
+                else{
+
+                    Node *toInsert = newNode(val,buffRoot);
+                    buffRoot->right = toInsert;
+                    buffRoot = toInsert;
+
+                    break;
+                }
+            }
+        }
+        while (buffRoot !=*root)
+        {
+            checkNode(buffRoot);
+            if (buffRoot->par == nullptr){
+
+                *root = buffRoot;
+                break;
+            }
+            buffRoot = buffRoot->par;
+
+            if (buffRoot ==*root)
+            {
+                buffRoot->color = 0;
+            }
         }
     }
+   void checkForCase2(Node *toDelete, int del, int fromDirection, Node **root){
 
+       if (toDelete == (*root))
+       {
+           (*root)->color = 0;
+           return;
+       }
+    }
 }
 
 
