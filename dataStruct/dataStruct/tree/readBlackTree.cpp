@@ -452,6 +452,32 @@ void checkForCase2(Node *toDelete, int deletes, int fromDirection, Node **root) 
     }
 }
 
+// 红黑树的删除
+void deleteNode(int val, Node **root){
+
+    Node *buffRoot = *root;
+    while(1)
+    {
+        if (val ==buffRoot->val)
+        {
+            break;
+        }
+
+        if (val > buffRoot->val){
+
+            if (buffRoot->right!= nullptr){
+                buffRoot = buffRoot->right;
+            }
+            else
+            {
+                printf("Node Not Found!!!");
+                return;
+            }
+        }
+    }
+
+}
+
 
 
 
