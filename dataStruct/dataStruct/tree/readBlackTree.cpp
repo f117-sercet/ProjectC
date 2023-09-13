@@ -453,31 +453,108 @@ void checkForCase2(Node *toDelete, int deletes, int fromDirection, Node **root) 
 }
 
 // 红黑树的删除
-void deleteNode(int val, Node **root){
+void deleteNode(int val, Node **root) {
 
     Node *buffRoot = *root;
-    while(1)
-    {
-        if (val ==buffRoot->val)
-        {
+    while (1) {
+        if (val == buffRoot->val) {
             break;
         }
 
-        if (val > buffRoot->val){
+        if (val > buffRoot->val) {
 
-            if (buffRoot->right!= nullptr){
+            if (buffRoot->right != nullptr) {
                 buffRoot = buffRoot->right;
-            }
-            else
-            {
+            } else {
                 printf("Node Not Found!!!");
                 return;
             }
         }
     }
+    Node *toDelete = buffRoot;
 
+    if (toDelete->left != nullptr) {
+
+        toDelete = toDelete->left;
+
+        while (toDelete->right != nullptr) {
+            toDelete = toDelete->right;
+        }
+
+    }
+    else if (toDelete->right!= nullptr)
+    {
+        toDelete = toDelete->right;
+
+        while (toDelete->left!= nullptr)
+        {
+            toDelete = toDelete->left;
+        }
+    }
+
+    if (toDelete == *root)
+    {
+        *root = nullptr;
+        return;
+    }
+
+    buffRoot->val = toDelete->val;
+    toDelete->val = val;
+
+    if (toDelete->color == 1 ||
+        (toDelete->left != nullptr && toDelete->left->color == 1) ||
+        (toDelete->right != nullptr && toDelete->right->color == 1))
+    {
+        if (toDelete->left == nullptr && toDelete->right == nullptr)
+        {
+            if (toDelete->par->left == toDelete)
+            {
+                toDelete->par->left = nullptr;
+            }
+            else
+            {
+                toDelete->par->right = nullptr;
+            }
+        }
+        else
+        {
+            if (toDelete->left!= nullptr)
+            {
+                toDelete->par->right =toDelete->left;
+                toDelete->left->par =toDelete->par;
+                toDelete->left->color =1;
+            }
+
+            else
+            {
+                toDelete->par->left = toDelete->right;
+                toDelete->right->par = toDelete->par;
+                toDelete->right->color = 1;
+            }
+        }
+
+        free(toDelete);
+    }
+    else
+    {
+        checkForCase2(toDelete, 1, ((toDelete->par->right == toDelete)), root);
+    }
 }
 
+void checkBlock(Node *temp,int c) {
+
+    if (temp == nullptr){
+
+        printf("%d",c);
+        return;
+    }
+    if (temp->color == 0){
+
+        c++;
+    }
+    checkBlock(temp->left,c);
+    checkBlock(temp->right,c);
+}
 
 
 
