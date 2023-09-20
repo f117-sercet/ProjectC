@@ -481,19 +481,15 @@ void deleteNode(int val, Node **root) {
             toDelete = toDelete->right;
         }
 
-    }
-    else if (toDelete->right!= nullptr)
-    {
+    } else if (toDelete->right != nullptr) {
         toDelete = toDelete->right;
 
-        while (toDelete->left!= nullptr)
-        {
+        while (toDelete->left != nullptr) {
             toDelete = toDelete->left;
         }
     }
 
-    if (toDelete == *root)
-    {
+    if (toDelete == *root) {
         *root = nullptr;
         return;
     }
@@ -503,30 +499,19 @@ void deleteNode(int val, Node **root) {
 
     if (toDelete->color == 1 ||
         (toDelete->left != nullptr && toDelete->left->color == 1) ||
-        (toDelete->right != nullptr && toDelete->right->color == 1))
-    {
-        if (toDelete->left == nullptr && toDelete->right == nullptr)
-        {
-            if (toDelete->par->left == toDelete)
-            {
+        (toDelete->right != nullptr && toDelete->right->color == 1)) {
+        if (toDelete->left == nullptr && toDelete->right == nullptr) {
+            if (toDelete->par->left == toDelete) {
                 toDelete->par->left = nullptr;
-            }
-            else
-            {
+            } else {
                 toDelete->par->right = nullptr;
             }
-        }
-        else
-        {
-            if (toDelete->left!= nullptr)
-            {
-                toDelete->par->right =toDelete->left;
-                toDelete->left->par =toDelete->par;
-                toDelete->left->color =1;
-            }
-
-            else
-            {
+        } else {
+            if (toDelete->left != nullptr) {
+                toDelete->par->right = toDelete->left;
+                toDelete->left->par = toDelete->par;
+                toDelete->left->color = 1;
+            } else {
                 toDelete->par->left = toDelete->right;
                 toDelete->right->par = toDelete->par;
                 toDelete->right->color = 1;
@@ -534,26 +519,24 @@ void deleteNode(int val, Node **root) {
         }
 
         free(toDelete);
-    }
-    else
-    {
+    } else {
         checkForCase2(toDelete, 1, ((toDelete->par->right == toDelete)), root);
     }
 }
 
-void checkBlock(Node *temp,int c) {
+void checkBlock(Node *temp, int c) {
 
-    if (temp == nullptr){
+    if (temp == nullptr) {
 
-        printf("%d",c);
+        printf("%d", c);
         return;
     }
-    if (temp->color == 0){
+    if (temp->color == 0) {
 
         c++;
     }
-    checkBlock(temp->left,c);
-    checkBlock(temp->right,c);
+    checkBlock(temp->left, c);
+    checkBlock(temp->right, c);
 }
 
 
