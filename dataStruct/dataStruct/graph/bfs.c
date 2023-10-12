@@ -7,6 +7,7 @@ struct queue
     int items[SIZE];
     int front;
     int rear;
+    int arry[10]
 };
 
 // Some declarations
@@ -192,4 +193,5 @@ int dequeue(struct queue *q)
 }
 
 // Returns element at front of queue
-int pollQueue(struct queue *q) { return q->items[q->front]; }
+int pollQueue(struct queue *q) {
+    return q->items[q->front]; }
