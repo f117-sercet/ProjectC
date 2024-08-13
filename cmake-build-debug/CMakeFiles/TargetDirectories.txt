@@ -1,3 +1,3 @@
-F:/git/Repository/gitHub/projectC/cmake-build-debug/CMakeFiles/projectC.dir
-F:/git/Repository/gitHub/projectC/cmake-build-debug/CMakeFiles/edit_cache.dir
-F:/git/Repository/gitHub/projectC/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+F:/git/Repository/gitHub/ProjectC/cmake-build-debug/CMakeFiles/projectC.dir
+F:/git/Repository/gitHub/ProjectC/cmake-build-debug/CMakeFiles/edit_cache.dir
+F:/git/Repository/gitHub/ProjectC/cmake-build-debug/CMakeFiles/rebuild_cache.dir
